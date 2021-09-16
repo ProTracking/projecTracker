@@ -23,12 +23,13 @@
 
 
 
-<strong>Last update: <strong> 09/15/2021
+<strong>Last update: </strong> 09/15/2021
  
 
 <h1>
 Project Tracker
 </h1>
+
 <h2>
 Executive Summary
 </h2>

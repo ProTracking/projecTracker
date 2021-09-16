@@ -1,30 +1,22 @@
  <h1> CS-5279-50 Software Engineering Project 
 (2021F) </h1>
 
-
-
- 
 <h2>
 	Vanderbilt University <br />
 	School of Engineering <br />
 	Department of Computer Science <br />
 </h2>
-	
 
 
-<strong> Term Project:</strong>  	
-<h1> Project Tracker </h1> 
+<strong> Term Project:</strong>
 
+<h1> Project Tracker </h1>
 
-<strong> Group members:	</strong>  
-            Taylor <strong> Watson </strong><br />
-			Mohammed <strong>Wardeh </strong>
-
-
-
+<strong> Group members: </strong>  
+ Taylor <strong> Watson </strong><br />
+Mohammed <strong>Wardeh </strong>
 
 <strong>Last update: </strong> 09/15/2021
- 
 
 <h1>
 Project Tracker
@@ -33,9 +25,6 @@ Project Tracker
 <h2>
 Executive Summary
 </h2>
-
-	
-
 
 <h3> Background </h3> 
 <p>
@@ -57,7 +46,7 @@ The methodology we will follow to develop the project will be Agile. This enable
 </p>
 <img src='./readMeFiles/Picture1.jpg' />
  
-<strong> Source: </strong> Synopsys – url: https://www.debutinfotech.com/blog/agile-development-accelerating-your-business-in-an-offshore-software-development-environment. 
+<strong> Source: </strong> Synopsys – url: https://www.debutinfotech.com/blog/agile-development-accelerating-your-business-in-an-offshore-software-development-environment.
 
 <h4>
 Version Control 
@@ -75,7 +64,7 @@ GitHub Projects will be used to track the project progress. A Kanban board was c
 
 <h4>
 Development Tech Stack
-<h4>
+</h4>
 <p>
 The following tech stack will be utilized to deliver the MVP product: 
 <p>
@@ -88,7 +77,8 @@ The following tech stack will be utilized to deliver the MVP product:
 </li>
 <li>
 
-<strong> State Management: </strong> Apollo Client to manage data with GraphQL. 
+<strong> State Management: </strong> Apollo Client to manage data with GraphQL.
+
 </li>
 
 </ol>
@@ -97,12 +87,12 @@ The following tech stack will be utilized to deliver the MVP product:
 Testing
 </h3>
 <strong> Backend: </strong>  Junit tests will be written to develop and perform regression testing. 
-<strong> Front-end:</strong>  React Testing Libraries and / or Mocha JavaScript testing framework will be used. 
+<strong> Front-end:</strong>  React Testing Libraries and / or Mocha JavaScript testing framework will be used.
 
 <h3>
 Build
 </h3>
-Gradle building library will be used for the backend. 
+Gradle building library will be used for the backend.
 
 <h3>
 Deployment/Environment
@@ -112,4 +102,4 @@ The project will be deployed to Heroku. A Heroku CLI will be installed and prepa
 <h3>
 Continuous Integration
 </h3>
-GitHub Action will be used for tasks automation during SDLC to run testing scripts. Corresponding workflows for all pushing events will be created to run the jobs of automation testing. 
+GitHub Action will be used for tasks automation during SDLC to run testing scripts. Corresponding workflows for all pushing events will be created to run the jobs of automation testing.

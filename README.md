@@ -37,14 +37,14 @@ Therefore, our small team has decided to build a project development tracker. Al
 
 <h3>
 Software Development Methodology 
-<h3>
+</h3>
 <h4>
 Agile
 </h4>
 <p>
 The methodology we will follow to develop the project will be Agile. This enables us to iteratively release and improve efficiency of development through quickly identifying fixes and defects and fixing them, so the project expectations are aligned early on. In the real world, agile is very helpful to users to realize benefits, use delivered features and suggest improvements.
 </p>
-<img src='./readMeFiles/Picture1.jpg' width='100%'/>
+<img src='./readMeFiles/Picture1.jpg' alt='' width='100%'/>
  
 <strong> Source: </strong> Synopsys – url: https://www.debutinfotech.com/blog/agile-development-accelerating-your-business-in-an-offshore-software-development-environment.
 

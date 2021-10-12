@@ -2,155 +2,90 @@
 -- Please log an issue at https://redmine.postgresql.org/projects/pgadmin4/issues/new if you find any bugs, including reproduction steps.
 BEGIN;
 
-
-CREATE TABLE IF NOT EXISTS public.protracking
+CREATE TABLE IF NOT EXISTS public.ticket
 (
-    id integer NOT NULL,
-    subject "char" NOT NULL,
-    content text NOT NULL,
-    html text,
-    status_id integer NOT NULL,
-    priority_id integer NOT NULL,
-    user_id integer NOT NULL,
-    agent_id integer NOT NULL,
-    category_id integer NOT NULL,
-    created_at date NOT NULL,
-    updated_at bigint NOT NULL,
-    completed_at timestamp with time zone,
+    id serial NOT NULL,
+    subject character varying(255) NOT NULL,
+    content character varying(1000) NOT NULL,
+    html character varying(255),
+    priority character varying(255),
+    user_id integer,
+	settings_id integer UNIQUE,
+    created_at date NOT NULL default now(),
+    updated_at date,
+    completed_at date,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.protracking_statuses
+CREATE TABLE IF NOT EXISTS public.settings
 (
-    id integer NOT NULL,
-    name "char" NOT NULL,
-    color bigint NOT NULL,
+    id serial NOT NULL,
+    lang character varying(255),
+    slug character varying(255),
+    value character varying(255),
+    "default" character varying(255),
+    created_at date NOT NULL default now(),
+    updated_at date,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.protracking_priorities
+CREATE TABLE IF NOT EXISTS public.comments
 (
-    id integer NOT NULL,
-    name "char" NOT NULL,
-    color bigint NOT NULL,
+    id serial NOT NULL,
+    content character varying(1000),
+    user_id integer,
+    ticket_id integer,
+    created_at date NOT NULL default now(),
+    updated_at date,
+    html character varying(255),
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.protracking_settings
+CREATE TABLE IF NOT EXISTS public.team
 (
-    id integer NOT NULL,
-    lang "char",
-    slug "char" NOT NULL,
-    value text NOT NULL,
-    "default" text NOT NULL,
-    created_at date NOT NULL,
-    updated_at date NOT NULL,
+    id serial NOT NULL,
+    name character varying(255) NOT NULL,
+    location character varying(255),
+    poc character varying(255),
     PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS public.protracking_comments
-(
-    id integer NOT NULL,
-    content text NOT NULL,
-    user_id integer NOT NULL,
-    ticket_id integer NOT NULL,
-    created_at date NOT NULL,
-    updated_at date NOT NULL,
-    html text,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS public.protracking_categories
-(
-    id integer NOT NULL,
-    name "char" NOT NULL,
-    color bigint NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS public.protracking_categories_users
-(
-    category_id integer NOT NULL,
-    user_id integer NOT NULL,
-    PRIMARY KEY (category_id)
 );
 
 CREATE TABLE IF NOT EXISTS public.users
 (
-    id integer NOT NULL,
-    protracking_admin boolean NOT NULL,
-    protracking_agent boolean NOT NULL,
+    id serial NOT NULL,
+    protracking_admin boolean NOT NULL default FALSE,
+    username character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.users_accounts
-(
-    user_id integer NOT NULL,
-    username "char" NOT NULL,
-    password "char" NOT NULL,
-    email "char" NOT NULL,
-    created_on timestamp with time zone NOT NULL,
-    last_login timestamp with time zone NOT NULL,
-    PRIMARY KEY (user_id)
-);
-
-ALTER TABLE public.protracking
-    ADD FOREIGN KEY (status_id)
-    REFERENCES public.protracking_statuses (id)
-    NOT VALID;
-
-
-ALTER TABLE public.protracking
-    ADD FOREIGN KEY (priority_id)
-    REFERENCES public.protracking_priorities (id)
-    NOT VALID;
-
-
-ALTER TABLE public.protracking
+ALTER TABLE public.ticket
     ADD FOREIGN KEY (user_id)
     REFERENCES public.users (id)
     NOT VALID;
 
 
-ALTER TABLE public.protracking
-    ADD FOREIGN KEY (agent_id)
-    REFERENCES public.users (id)
-    NOT VALID;
-
-
-ALTER TABLE public.protracking
-    ADD FOREIGN KEY (category_id)
-    REFERENCES public.protracking_categories (id)
-    NOT VALID;
-
-
-ALTER TABLE public.protracking_comments
+ALTER TABLE public.comments
     ADD FOREIGN KEY (user_id)
     REFERENCES public.users (id)
     NOT VALID;
 
 
-ALTER TABLE public.protracking_comments
+ALTER TABLE public.comments
     ADD FOREIGN KEY (ticket_id)
-    REFERENCES public.protracking (id)
+    REFERENCES public.ticket (id)
     NOT VALID;
 
 
-ALTER TABLE public.protracking_categories_users
-    ADD FOREIGN KEY (category_id)
-    REFERENCES public.protracking_categories (id)
+ALTER TABLE public.users
+    ADD FOREIGN KEY (id)
+    REFERENCES public.team (id)
     NOT VALID;
-
-
-ALTER TABLE public.protracking_categories_users
-    ADD FOREIGN KEY (user_id)
-    REFERENCES public.users (id)
-    NOT VALID;
-
-
-ALTER TABLE public.users_accounts
-    ADD FOREIGN KEY (user_id)
-    REFERENCES public.users (id)
-    NOT VALID;
-
+	
+ALTER TABLE public.ticket
+	ADD FOREIGN KEY (settings_id)
+	REFERENCES public.settings(id)
+	NOT VALID;
+	
 END;

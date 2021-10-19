@@ -3,8 +3,8 @@ const router = express.Router();
 const db = require('../../db/connection');
 
 
-// Create Ticket
-router.post('/comment', ({body}, res) => {
+// Create Comment
+router.post('/createComment', ({body}, res) => {
     const sql = 'Insert Into comments (content, user_id, ticket_id, html) VALUES (' +
                 '\'' + body.content + '\',' +
                      + body.user_id + ',' +

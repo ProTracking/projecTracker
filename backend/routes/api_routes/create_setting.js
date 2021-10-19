@@ -4,7 +4,7 @@ const db = require('../../db/connection');
 
 
 // Create Setting
-router.post('/setting', ({body}, res) => {
+router.post('/createSetting', ({body}, res) => {
     const sql = 'Insert Into settings (lang, slug, value, "default") VALUES (' +
                 '\'' + body.lang + '\',' +
                 '\'' + body.slug + '\',' +

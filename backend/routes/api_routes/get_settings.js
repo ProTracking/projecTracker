@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../db/connection');
 
-// Get all tickets from DB
-router.get('/allTickets', (req,res) => {
-    const sql = "select * from ticket";
+// Get all settings from DB
+router.get('/allSettings', (req,res) => {
+    const sql = "select * from settings";
     db.query(sql,(err,rows) => {
         if(err) {
             res.status(500).json({
@@ -19,9 +19,9 @@ router.get('/allTickets', (req,res) => {
     });
 });
 
-// Get tickets with id
-router.get('/ticket' , ({body},res) => {
-    const sql = "select * from ticket where id = " + body.ticket_id;
+// Get setting with id
+router.get('/setting' , ({body},res) => {
+    const sql = "select * from settings where id = " + body.setting_id;
     db.query(sql,(err,rows) => {
         if(err) {
             res.status(500).json({
@@ -37,4 +37,3 @@ router.get('/ticket' , ({body},res) => {
 });
 
 module.exports = router;
-

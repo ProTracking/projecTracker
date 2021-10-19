@@ -3,8 +3,8 @@ const router = express.Router();
 const db = require('../../db/connection');
 
 
-// Create Ticket
-router.post('/team', ({body}, res) => {
+// Create Team
+router.post('/createTeam', ({body}, res) => {
     const sql = 'Insert Into team (name, location, poc) VALUES (' +
                 '\'' + body.name + '\',' +
                 '\'' + body.location + '\',' +

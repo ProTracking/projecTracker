@@ -3,8 +3,8 @@ const router = express.Router();
 const db = require('../../db/connection');
 
 
-// Create Ticket
-router.post('/user', ({body}, res) => {
+// Create User
+router.post('/createUser', ({body}, res) => {
     const sql = 'Insert Into users (protracking_admin, username, password, email, team_id) VALUES (' +
                        body.protracking_admin + ',' +
                 '\'' + body.username + '\',' +

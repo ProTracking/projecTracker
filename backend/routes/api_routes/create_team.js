@@ -4,13 +4,11 @@ const db = require('../../db/connection');
 
 
 // Create Ticket
-router.post('/ticket', ({body}, res) => {
-    const sql = 'INSERT INTO ticket (subject,content,html,priority,user_id) VALUES (' +
-                '\'' + body.subject + '\',' +
-                '\'' + body.content + '\',' +
-                '\'' + body.html + '\',' +
-                '\'' + body.priority + '\',' +
-                       body.user_id + ')';
+router.post('/team', ({body}, res) => {
+    const sql = 'Insert Into team (name, location, poc) VALUES (' +
+                '\'' + body.name + '\',' +
+                '\'' + body.location + '\',' +
+                '\'' + body.poc + '\')';
 
     db.query(sql, (err, result) => {
         if(err) {

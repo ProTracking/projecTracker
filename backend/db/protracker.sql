@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS public.users
     username character varying(255) NOT NULL,
     password character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
+    team_id integer NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -79,7 +80,7 @@ ALTER TABLE public.comments
 
 
 ALTER TABLE public.users
-    ADD FOREIGN KEY (id)
+    ADD FOREIGN KEY (team_id)
     REFERENCES public.team (id)
     NOT VALID;
 	

@@ -4,12 +4,8 @@ const db = require('../../db/connection');
 
 
 // Create Comment
-router.post('/createComment', ({body}, res) => {
-    const sql = 'Insert Into comments (content, user_id, ticket_id, html) VALUES (' +
-                '\'' + body.content + '\',' +
-                     + body.user_id + ',' +
-                     + body.ticket_id + ',' +
-                '\'' + body.html + '\')';
+router.post('/comments', ({body}, res) => {
+    const sql = `Insert Into comments (content, user_id, ticket_id, html) VALUES ('\'${body.content}\', ${body.user_id}, ${body.ticket_id}, \'${body.html}\')`;
 
     db.query(sql, (err, result) => {
         if(err) {

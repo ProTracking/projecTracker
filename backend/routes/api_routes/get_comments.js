@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../../db/connection');
 
 // Get all Comments from DB
-router.get('/allComments', (req,res) => {
+router.get('/comments', (req,res) => {
     const sql = "select * from comments";
     db.query(sql,(err,rows) => {
         if(err) {
@@ -20,9 +20,10 @@ router.get('/allComments', (req,res) => {
 });
 
 // Get comment with id
-router.get('/comment' , ({body},res) => {
-    const sql = "select * from comments where id = " + body.comment_id;
-    db.query(sql,(err,rows) => {
+router.get('/comments/:id' , (req,res) => {
+    const sql = `select * from comments where id = ${req.params.id}`;
+    
+    db.query(sql, (err,rows) => {
         if(err) {
             res.status(500).json({
                 error:err.message

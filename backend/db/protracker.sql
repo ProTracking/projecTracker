@@ -2,13 +2,15 @@
 -- Please log an issue at https://redmine.postgresql.org/projects/pgadmin4/issues/new if you find any bugs, including reproduction steps.
 BEGIN;
 
-CREATE TABLE IF NOT EXISTS public.ticket
+CREATE TABLE IF NOT EXISTS public.tickets
 (
     id serial NOT NULL,
     subject character varying(255) NOT NULL,
     content character varying(1000) NOT NULL,
     html character varying(255),
     priority character varying(255),
+    status character varying(255),
+    project_id integer,
     user_id integer,
 	settings_id integer UNIQUE,
     created_at date NOT NULL default now(),
@@ -41,7 +43,7 @@ CREATE TABLE IF NOT EXISTS public.comments
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.team
+CREATE TABLE IF NOT EXISTS public.teams
 (
     id serial NOT NULL,
     name character varying(255) NOT NULL,
@@ -53,7 +55,6 @@ CREATE TABLE IF NOT EXISTS public.team
 CREATE TABLE IF NOT EXISTS public.users
 (
     id serial NOT NULL,
-    protracking_admin boolean NOT NULL default FALSE,
     username character varying(255) NOT NULL,
     password character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
@@ -61,7 +62,17 @@ CREATE TABLE IF NOT EXISTS public.users
     PRIMARY KEY (id)
 );
 
-ALTER TABLE public.ticket
+CREATE TABLE IF NOT EXISTS public.projects
+(
+    id serial,
+    name character varying(255) NOT NULL,
+    created_at date NOT NULL default now(),
+    updated_at date NOT NULL,
+    completed_at date NOT NULL,
+    PRIMARY KEY(id)
+);
+
+ALTER TABLE public.tickets
     ADD FOREIGN KEY (user_id)
     REFERENCES public.users (id)
     NOT VALID;
@@ -75,18 +86,23 @@ ALTER TABLE public.comments
 
 ALTER TABLE public.comments
     ADD FOREIGN KEY (ticket_id)
-    REFERENCES public.ticket (id)
+    REFERENCES public.tickets (id)
     NOT VALID;
 
 
 ALTER TABLE public.users
     ADD FOREIGN KEY (team_id)
-    REFERENCES public.team (id)
+    REFERENCES public.teams (id)
     NOT VALID;
 	
-ALTER TABLE public.ticket
+ALTER TABLE public.tickets
 	ADD FOREIGN KEY (settings_id)
-	REFERENCES public.settings(id)
+	REFERENCES public.settings (id)
+	NOT VALID;
+
+ALTER TABLE public.tickets
+	ADD FOREIGN KEY (project_id)
+	REFERENCES public.projects (id)
 	NOT VALID;
 	
 END;

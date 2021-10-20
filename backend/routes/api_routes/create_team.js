@@ -4,11 +4,8 @@ const db = require('../../db/connection');
 
 
 // Create Team
-router.post('/createTeam', ({body}, res) => {
-    const sql = 'Insert Into team (name, location, poc) VALUES (' +
-                '\'' + body.name + '\',' +
-                '\'' + body.location + '\',' +
-                '\'' + body.poc + '\')';
+router.post('/teams', ({body}, res) => {
+    const sql = `Insert Into teams (name, location, poc) VALUES (\'${body.name}\', \'${body.location}\', '\'${body.poc}\')`;
 
     db.query(sql, (err, result) => {
         if(err) {

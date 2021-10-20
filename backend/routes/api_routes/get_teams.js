@@ -3,8 +3,8 @@ const router = express.Router();
 const db = require('../../db/connection');
 
 // Get all teams from DB
-router.get('/allTeams', (req,res) => {
-    const sql = "select * from team";
+router.get('/teams', (req,res) => {
+    const sql = "select * from teams";
     db.query(sql,(err,rows) => {
         if(err) {
             res.status(500).json({
@@ -20,9 +20,10 @@ router.get('/allTeams', (req,res) => {
 });
 
 // Get team with id
-router.get('/team' , ({body},res) => {
-    const sql = "select * from team where id = " + body.team_id;
-    db.query(sql,(err,rows) => {
+router.get('/teams/:id' , (req,res) => {
+    const sql = `select * from teams where id = ${req.params.id}`;
+    
+    db.query(sql, (err,rows) => {
         if(err) {
             res.status(500).json({
                 error:err.message

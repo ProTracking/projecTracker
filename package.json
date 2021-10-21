@@ -4,11 +4,11 @@
   "description": "Back-end",
   "main": "server.js",
   "dependencies": {
-    "JSONPath": "^0.11.2",
     "express": "^4.17.1",
     "jsonpath": "npm:JSONPath@^0.11.2",
+    "JSONPath": "^0.11.2",
     "jsonpath-plus": "^6.0.1",
-    "nodemon": "^2.0.13",
+    "nodemon": "^2.0.14",
     "pg": "^8.7.1",
     "postgres": "^1.0.2"
   },

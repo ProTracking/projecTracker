@@ -4,7 +4,7 @@ const client = new Client({
     user: 'postgres',
     host: 'localhost',
     database: 'protracking',
-    password: 'nan',
+    password: '',
     port: 5432,
 });
 

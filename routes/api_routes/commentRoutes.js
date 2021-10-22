@@ -5,8 +5,8 @@ const db = require('../../db/connection');
 
 // Create Comment
 router.post('/comment', ({body}, res) => {
-    const sql = `Insert Into comments (content, user_id, ticket_id, html) VALUES ('\'${body.content}\', ${body.user_id}, ${body.ticket_id}, \'${body.html}\')`;
-
+    const sql = `Insert Into comments (content, user_id, ticket_id, html) VALUES (\'${body.content}\', ${body.user_id}, ${body.ticket_id}, \'${body.html}\')`;
+    console.log(sql)
     db.query(sql, (err, result) => {
         if(err) {
             res.status(400).json({

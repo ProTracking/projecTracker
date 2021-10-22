@@ -5,8 +5,8 @@ const db = require('../../db/connection');
 
 // Create User
 router.post('/user', ({body}, res) => {
-    const sql = `Insert Into users (protracking_admin, username, password, email, team_id) ` 
-                + `VALUES (${body.protracking_admin},\'${body.username}\',\'${body.password}\',\'${body.email }\',${body.team_id})`;
+    const sql = `Insert Into users (username, password, email, team_id) ` 
+                + `VALUES (\'${body.username}\',\'${body.password}\',\'${body.email }\',${body.team_id})`;
 
     db.query(sql, (err, result) => {
         if(err) {

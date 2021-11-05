@@ -61,7 +61,7 @@ router.get('/ticket/:id' , (req,res) => {
 // Update Ticket
 router.put('/ticket/:id', (req, res) => {
     const condition  = `id = ${req.params.id}`;
-    console.log(req.body.table);
+    
     helper("tickets", { data: req.body.table, schema: req.body.$schema }, condition, (result) => {
         res.json({
             message: 'Success',

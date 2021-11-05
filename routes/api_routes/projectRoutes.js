@@ -6,7 +6,7 @@ const db = require('../../db/connection');
 // Create Project
 router.post('/project', ({body}, res) => {
     const sql = `Insert Into projects (name) VALUES (\'${body.content}\')`;
-    console.log(sql)
+    
     db.query(sql, (err, result) => {
         if(err) {
             res.status(400).json({

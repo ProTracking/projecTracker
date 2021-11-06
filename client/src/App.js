@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React, { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
 import firebase from "firebase/compat/app";
-import { AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider } from "./components/contexts/AuthContext";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import PrivateRoute from './components/PrivateRoute';
 import AuthForm from "./components/AuthForm/AuthForm";

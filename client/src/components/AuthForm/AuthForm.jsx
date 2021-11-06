@@ -1,8 +1,13 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { Card, Menu, Form, Button } from "semantic-ui-react";
 import { auth, authUI } from "../../config/firebase-config";
+import { useHistory } from 'react-router-dom';
 import "./AuthForm.css";
 import firebase from "firebase/compat/app";
+// import { Dashboard } from "../../pages/Dashboard/Dashboard";
+// import Navbar from "../Navbar";
+
+
 
 async function authenticateUser(email, password, isLogin) {
   try {
@@ -10,24 +15,23 @@ async function authenticateUser(email, password, isLogin) {
       ? await auth.signInWithEmailAndPassword(email, password)
       : await auth.createUserWithEmailAndPassword(email, password);
     console.log(user);
-    window.location.href = '/dashboard';
   } catch (err) {
     console.log(err);
   }
 }
 
-function renderLoggedIn() {
-  return (
-    <div className="loggedIn-wrapper">
-      <h1>You are logged in!</h1>
-      <div>
-        <Button onClick={() => auth.signOut()} color="yellow">
-          Log out
-        </Button>
-      </div>
-    </div>
-  );
-}
+// function renderLoggedIn() {
+//   return (
+//     <div className="loggedIn-wrapper">
+//     <h1>You are logged in!</h1>
+//     <div>
+//       <Button onClick={() => auth.signOut()} color="yellow">
+//         Log out
+//       </Button>
+//     </div>
+//   </div> 
+//   );
+// }
 
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -38,7 +42,8 @@ function AuthForm() {
 
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
-  
+  const history = useHistory();
+
   auth.onAuthStateChanged((user) => setUser(user));
 
   useEffect(() => {
@@ -55,10 +60,10 @@ function AuthForm() {
       <Card className="auth-form-card">
         <Card.Content>
           {user ? (
-            renderLoggedIn()
+            history.push('/dashboard')
+            // renderLoggedIn()
           ) : (
             <Fragment>
-              <Card.Header className="auth-form-header">Auth Form</Card.Header>
               <Menu compact secondary>
                 <Menu.Item
                   name="Login"
@@ -103,6 +108,7 @@ function AuthForm() {
                     </Button>
                   </Form>
                   <div className="google-login"></div>
+
                 </Fragment>
               ) : (
                 <Fragment>

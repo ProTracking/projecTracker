@@ -7,6 +7,7 @@ import { AuthProvider } from "./components/contexts/AuthContext";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import PrivateRoute from './components/PrivateRoute';
 import AuthForm from "./components/AuthForm/AuthForm";
+import NoMatch from "./pages/NoMatch/NoMatch";
 
 
 function App() {
@@ -23,16 +24,20 @@ function App() {
 
   return (
     <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
+      
+      
     >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
+      <div className="w-100">
         <Router>
           <AuthProvider>
           <Switch>
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-            <Route path="/" component={AuthForm} />
-           
+          <Route exact path="/" component={AuthForm} /> 
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/about" component={Dashboard} />
+          <PrivateRoute path="/page_1" component={Dashboard} />
+          <PrivateRoute path="/page_2" component={Dashboard} />
+          <PrivateRoute path="/page_3" component={Dashboard} />
+          <Route component={NoMatch} />
           </Switch>
           </AuthProvider>
         </Router>

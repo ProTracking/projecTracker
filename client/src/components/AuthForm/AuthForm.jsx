@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { Card, Menu, Form, Button } from "semantic-ui-react";
 import { auth, authUI } from "../../config/firebase-config";
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import "./AuthForm.css";
 import firebase from "firebase/compat/app";
 // import { Dashboard } from "../../pages/Dashboard/Dashboard";
@@ -42,7 +42,7 @@ function AuthForm() {
 
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
-  const history = useHistory();
+  // const history = useHistory();
 
   auth.onAuthStateChanged((user) => setUser(user));
 
@@ -60,8 +60,7 @@ function AuthForm() {
       <Card className="auth-form-card">
         <Card.Content>
           {user ? (
-            history.push('/dashboard')
-            // renderLoggedIn()
+            <Redirect to={{pathname: '/dashboard'}} />
           ) : (
             <Fragment>
               <Menu compact secondary>
@@ -153,19 +152,3 @@ function AuthForm() {
 }
 
 export default AuthForm;
-
-
-    // "@testing-library/jest-dom": "^5.14.1",
-    // "@testing-library/react": "^11.2.7",
-    // "@testing-library/user-event": "^12.8.3",
-    // "axios": "^0.24.0",
-    // "bootstrap": "^5.1.3",
-
-    // "react": "^17.0.2",
-    // "react-bootstrap": "^2.0.1",
-    // "react-dom": "^17.0.2",
-    // "react-icons": "^4.3.1",
-    // "react-router-dom": "^5.3.0",
-    // "react-scripts": "^4.0.3",
-    // "styled-components": "^5.3.3",
-    // "web-vitals": "^1.1.2"

@@ -1,12 +1,12 @@
 // @flow 
 import * as React from 'react';
-import { SignOut } from '../../components/SignOut';
 import { ListOfTodo } from '../../components/ListOfTodo';
+import Nav from "../../components/Nav"
 
 export const Dashboard = () => {
     return (
-        <div>
-            < SignOut  />
+        <div style={{width: "100%"}}>
+            <Nav />
             <ListOfTodo />
             
         </div>

@@ -35,7 +35,7 @@ export function SignIn() {
           setAuth(true);
           window.localStorage.setItem("auth", "true");
           history.push("/dashboard");
-          window.location.href = '/dashboard';
+          // window.location.href = '/dashboard';
         }
       }).catch((error) => {
         // Handle Errors here.

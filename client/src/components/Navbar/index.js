@@ -10,9 +10,9 @@ const Navbar = () => {
         <Bars />
         <NavMenu>
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/events">Events</NavLink>
-          <NavLink to="/annual">Annual Report</NavLink>
-          <NavLink to="/team">Teams</NavLink>
+          <NavLink to="/page_1">Events</NavLink>
+          <NavLink to="/page_2">Annual Report</NavLink>
+          <NavLink to="/page_3">Teams</NavLink>
           <NavLink to="/blogs">Blogs</NavLink>
         </NavMenu>
         <NavBtn>

@@ -6,7 +6,7 @@ const db = require('../../db/connection');
 // Create Setting
 router.post('/setting', ({body}, res) => {
     const sql = `Insert Into settings (lang, slug, value, "default") VALUES (\'${body.lang}\', \'${body.slug}\', \'${body.value}\', \'${body.default}\');`;
-    console.log(sql)
+    
     db.query(sql, (err, result) => {
         if(err) {
             res.status(400).json({
@@ -43,7 +43,7 @@ router.get('/setting/:id' , (req,res) => {
     const sql = `select * from settings where id = ${req.params.id}`;
     
     db.query(sql, (err,rows) => {
-        console.log(err)
+        
         if(err) {
             res.status(400).json({
                 error: err.message

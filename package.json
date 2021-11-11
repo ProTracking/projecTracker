@@ -10,8 +10,7 @@
     "firebaseui": "^6.0.0",
     "jsonpath": "npm:JSONPath@^0.11.2",
     "jsonpath-plus": "^6.0.1",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.14",
+    "nodemon": "^2.0.15",
     "pg": "^8.7.1",
     "postgres": "^1.0.2"
   },
@@ -29,6 +28,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^6.3.0",
     "jest": "^27.0.0"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

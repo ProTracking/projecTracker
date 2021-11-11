@@ -4,12 +4,13 @@
   "description": "Back-end",
   "main": "server.js",
   "dependencies": {
+    "JSONPath": "^0.11.2",
     "express": "^4.17.1",
     "firebase": "^9.2.0",
     "firebaseui": "^6.0.0",
     "jsonpath": "npm:JSONPath@^0.11.2",
-    "JSONPath": "^0.11.2",
     "jsonpath-plus": "^6.0.1",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.14",
     "pg": "^8.7.1",
     "postgres": "^1.0.2"

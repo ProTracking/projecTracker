@@ -33,9 +33,8 @@ db.query('SELECT NOW()', (err, res) => {
     if (err) throw err;
     console.log('Database Connected.');
 
-    app.listen(process.env.PORT, () => {
-        // console.log(`Server running on port ${PORT}`);
-        console.log(process.env.PORT);
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
     });
 
     // db.end()

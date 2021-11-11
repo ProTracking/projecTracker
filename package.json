@@ -16,9 +16,9 @@
     "postgres": "^1.0.2"
   },
   "scripts": {
-    "server": "node server.js",
-    "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "client"  : "cd client && npm start",
+    "server"  : "node server.js",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",

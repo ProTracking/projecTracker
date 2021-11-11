@@ -33,7 +33,7 @@ db.query('SELECT NOW()', (err, res) => {
     if (err) throw err;
     console.log('Database Connected.');
 
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT ||PORT, () => {
         console.log(`Server running on port ${PORT}`);
     });
 

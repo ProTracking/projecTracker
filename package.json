@@ -16,8 +16,9 @@
     "jsonpath-plus": "^6.0.1",
     "nodemon": "^2.0.15",
     "pg": "^8.7.1",
-    "postgres": "^1.0.2", 
-    "concurrently": "^6.3.0"
+    "postgres": "^1.0.2",
+    "concurrently": "^6.3.0",
+    "jest": "^27.0.0"
   },
   "scripts": {
     "start": "concurrently \"nodemon server.js\" \"npm run client\"",
@@ -29,9 +30,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^6.3.0",
-    "jest": "^27.0.0"
-  }
+  "license": "ISC"
 }

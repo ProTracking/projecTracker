@@ -17,8 +17,9 @@
   },
   "scripts": {
     "start": "node server.js",
-    "develop": "concurrently \"node server.js\" \"cd client && npm start\"",
-    "install": "npm i && cd client && npm i",
+    "develop": "concurrently \"npm run watch\" \"cd client && npm start\"",
+    "install": "npm install && cd ../client && npm install",
+    "seed": "npm run seed",
     "build": "cd client && npm run build"
   },
   "keywords": [],

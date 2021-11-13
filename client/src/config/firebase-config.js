@@ -1,11 +1,11 @@
 import "firebase/compat/auth"
-// import { initializeApp } from 'firebase/app';
+const { initializeApp } = require('firebase-admin/app');
 import * as firebaseui from 'firebaseui';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
-const app = firebase.initializeApp({
+const app = initializeApp({
   apiKey: "AIzaSyDXH8tJTwaOGEamm6jYzhfQa5r6dGXpTIg",
   authDomain: "protracker-2ec25.firebaseapp.com",
   projectId: "protracker-2ec25",

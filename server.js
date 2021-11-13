@@ -1,5 +1,5 @@
 const express = require('express');
-require('dotenv').config()
+
 const db = require('./db/connection');
 const api_routes = require('./routes/api_routes');
 const PORT = process.env.PORT || 3001;
@@ -23,6 +23,7 @@ const character = {
 };
 
 app.get('/api/character',(req,res) => {
+    console.log("Hello");
     res.json(character)
 })
 
